@@ -111,7 +111,32 @@ $script = <<< JS
 	});
 JS;
 $this->registerJs($script, View::POS_READY);
+
+Template 3.
+
+<?php
+	$this->registerJs(
+		
+		"$('#onapply').on('keydown', function() 
+			{ 
+				var zipId = (  $(this).val()  )? $(this).val() : 1;
+				$.get('../locations/get-city-province', { zipId : zipId}, function(data){
+					
+					//alert(data);
+					var array = $.parseJSON(data);
+					//alert(array['city']);
+					
+					$('#customers-city').attr('value', array['city']);
+					$('#customers-province').attr('value', array['province']);
+				});
+				
+			});"
+	);
+?>
+
+
 */
+
 
 
 ?>
