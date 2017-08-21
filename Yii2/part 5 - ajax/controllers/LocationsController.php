@@ -94,28 +94,6 @@ class LocationsController extends Controller
         }
     }
 	
-	public function actionGetCityProvince($zipId)
-	{
-		//find the zip code from the locations table
-		
-		//1. DB connection
-		$connection = Yii::$app->db;
-		
-		//2. Query
-		$query = "SELECT * FROM locations WHERE zip_code = :zip_code";
-		
-		//3. Execute query
-		$sql = $connection->createCommand($query);
-		$sql->bindValue(':zip_code', $zipId); 
-		$results = $sql->queryAll(); 
-		
-				
-		//4. Test result
-		if(  $results  )
-		{
-			echo Json::encode($results);
-		}
-	}
 	
 	public function actionGetCityProvince($zipId)
 	{
