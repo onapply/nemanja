@@ -124,7 +124,7 @@ class LocationsController extends Controller
 	{
         $model = new Locations();
 		
-		$results = $model->actionGetCityProvinceModel($zipId)
+		$results = $model->actionGetCityProvinceModel($zipId);
 		
 		if(  $results  )
 		{
