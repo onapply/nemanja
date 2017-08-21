@@ -45,4 +45,27 @@ class Locations extends \yii\db\ActiveRecord
             'province' => 'Province',
         ];
     }
+    
+    
+	public function actionGetCityProvinceModel($zipId)
+	{
+		//1. DB connection
+		$connection = Yii::$app->db;
+		
+		//2. Query
+		$query = "SELECT * FROM locations WHERE zip_code = :zip_code";
+		
+		//3. Execute query
+		$sql = $connection->createCommand($query);
+		$sql->bindValue(':zip_code', $zipId); 
+		$results = $sql->queryAll(); 
+		
+				
+		//4. Test result
+		if(  $results  )
+		{
+			return Json::encode($results);
+		}
+		return null;
+	}
 }
